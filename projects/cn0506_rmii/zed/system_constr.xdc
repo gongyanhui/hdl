@@ -1,5 +1,9 @@
+set_property -dict {PACKAGE_PIN L18  IOSTANDARD LVDS_25} [get_ports ref_clk_125_p]                ; ## H04  FMC_LPC_CLK0_M2C_P
+set_property -dict {PACKAGE_PIN L19  IOSTANDARD LVDS_25} [get_ports ref_clk_125_n]                ; ## H05  FMC_LPC_CLK0_M2C_N
 
 set_property -dict {PACKAGE_PIN N19 IOSTANDARD LVCMOS25} [get_ports rmii_rx_er_a]                  ; ## D08 FMC_LPC_LA01_CC_P
+
+set_property -dict {PACKAGE_PIN M19  IOSTANDARD LVCMOS25} [get_ports rmii_mac_sel_0]               ; ## G06 FMC_LPC_LA00_CC_P
 set_property -dict {PACKAGE_PIN T17  IOSTANDARD LVCMOS25} [get_ports rmii_rx_dv_a]                 ; ## H14 FMC_LPC_LA07_N
 set_property -dict {PACKAGE_PIN P17  IOSTANDARD LVCMOS25} [get_ports {rmii_rxd_a[0]}]              ; ## H07 FMC_LPC_LA02_P
 set_property -dict {PACKAGE_PIN P18  IOSTANDARD LVCMOS25} [get_ports {rmii_rxd_a[1]}]              ; ## H08 FMC_LPC_LA02_N
@@ -41,4 +45,11 @@ create_clock -name rmii_rx_clk_0   -period  20 [get_pins i_system_wrapper/system
 create_clock -name rmii_rx_clk_1   -period  20 [get_pins i_system_wrapper/system_i/mii_to_rmii_1/U0/rmii2mac_rx_clk_bi_reg/Q]
 create_clock -name rmii_tx_clk_0   -period  20 [get_pins i_system_wrapper/system_i/mii_to_rmii_0/U0/rmii2mac_tx_clk_bi_reg/Q]
 create_clock -name rmii_tx_clk_1   -period  20 [get_pins i_system_wrapper/system_i/mii_to_rmii_1/U0/rmii2mac_tx_clk_bi_reg/Q]
+
+
+# set_property -dict {PACKAGE_PIN AB9   IOSTANDARD LVCMOS33} [get_ports JA9]                 ; ## JA9 N
+# set_property -dict {PACKAGE_PIN AB10  IOSTANDARD LVCMOS33} [get_ports clk_in]              ; ## JA8 P
+
+set_property -dict {PACKAGE_PIN AA8   IOSTANDARD LVCMOS33} [get_ports clk_out_50]            ; ## JA10 N
+set_property -dict {PACKAGE_PIN AA9   IOSTANDARD LVCMOS33} [get_ports clk_in_50 ]            ; ## JA4  P
 

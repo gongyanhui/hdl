@@ -85,6 +85,12 @@ module system_top (
 
   // mii interface
 
+  input               ref_clk_125_p,
+  input               ref_clk_125_n,
+
+  input               clk_in_50,
+  output              clk_out_50,
+
   output              reset_a,
   output              mdc_fmc_a,
   inout               mdio_fmc_a,
@@ -169,6 +175,11 @@ module system_top (
     .dio_o (gpio_i[31:0]),
     .dio_p (gpio_bd));
 
+  IBUFDS i_ibufds_clk_125 (
+    .I (ref_clk_125_p),
+    .IB (ref_clk_125_n),
+    .O (ref_clk_125));
+
    ad_iobuf #(.DATA_WIDTH(2)) i_iobuf_iic_scl (
     .dio_t ({iic_mux_scl_t_s,iic_mux_scl_t_s}),
     .dio_i (iic_mux_scl_o_s),
@@ -248,7 +259,9 @@ module system_top (
     .spi1_sdo_o (),
 
     .reset (reset),
-    .clk_50 (),
+    .clk_in_50 (clk_in_50),
+    .clk_out_50 (clk_out_50),
+    .ref_clk_125 (ref_clk_125),
 
     .MDIO_ETHERNET_0_0_mdc(mdc_fmc_a),
     .MDIO_ETHERNET_0_0_mdio_io(mdio_fmc_a),
